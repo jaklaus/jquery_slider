@@ -1,3 +1,7 @@
+body {
+	font-family: helvetica;
+}
+
 h1 {
 	text-align: center;
 }
@@ -21,6 +25,7 @@ h1 {
 
 #slide-num{
 	text-align: center;
+	margin-top: 10px;
 }
 
 #back{
@@ -30,3 +35,16 @@ h1 {
 #next{
 	float: right;
 }
+
+button {
+	border: none;
+	font-size: 14px;
+	background: none;
+	outline: none;
+	border-radius: 10px;
+}
+
+button:hover{
+	background: gray;
+	color: white;
+};

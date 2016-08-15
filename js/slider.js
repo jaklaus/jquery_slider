@@ -1,60 +1,75 @@
-	var sliderInt = 1;
-	var sliderNext = 2;
-	var count = $('img').length
 
 $('document').ready(function(){
 
 	fadeInImage();
-	startSlider();
 	nextButton();
 	backButton();
+	slideHover();
+	
 });
+	var sliderInt = 1;
+	var count = $('img').length
+	var startLoop = window.setInterval(loopLogic, 6000);
 
-function startSlider(){
-	var loop = setInterval(function(){
-		if(sliderInt === count)
-			sliderInt = 0;
-
-		sliderInt += 1
-
-		$('img').fadeOut(300);
-		$('img#' + sliderInt).fadeIn(300);
-
-
-
-	}, 5000)
-};
+function restartLoop(){
+		startLoop = window.setInterval(loopLogic, 6000);
+	}
 
 function fadeInImage(){
 		$("img#" + sliderInt).fadeIn(1000);
+		slideDisplay();
 	}
 
 function nextButton(){
-	$('#next').click(function(){
+	$('#next, img').click(function(){
 		sliderInt += 1;
-		fadeToNext(sliderInt);
+		fadeToNext();
 	})
 }
 
 function backButton(){
 	$('#back').click(function(){
 		sliderInt -= 1;
-		fadeToNext(sliderInt);
-		
+		fadeToNext();
 	})
 }
 
-function fadeToNext(id){
-	if(id > count){
-		id = 1;
+function fadeToNext(){
+	if(sliderInt > count){
 		sliderInt = 1;
 	}
 
-	if(id < 1){
-		id = count;
+	if(sliderInt < 1){
 		sliderInt = count;
 	}
-	$('img').fadeOut(1000);
-	$('img#' + id).fadeIn(1000);
-	
+	$('img').fadeOut(0);
+	$('img#' + sliderInt).fadeIn(1300);
+	slideDisplay();
+}
+
+function stopLoop(){
+	window.clearInterval(startLoop);
+}
+
+function loopLogic(){
+	if(sliderInt === count){
+		sliderInt = 0;
+	}
+		sliderInt += 1
+
+	$('img').fadeOut(300);
+	$('img#' + sliderInt).fadeIn(300);
+	slideDisplay();
+	};
+
+function slideDisplay(){
+	$('#slide-num').html("<strong>"+ sliderInt + "</strong>");
+}
+
+function slideHover(){
+	$('#container').hover(function(){
+			stopLoop();
+		}, function(){
+			restartLoop();
+	});
 }
