@@ -4,6 +4,7 @@ h1 {
 
 #slider img {
 	width: 800px;
+	height: auto;
 	display: none;
 }
 
