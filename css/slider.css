@@ -1,0 +1,30 @@
+h1 {
+	text-align: center;
+}
+
+#slider img {
+	width: 800px;
+}
+
+#container {
+	width: 800px;
+	margin: 0 auto;
+}
+
+#slider {
+	width: 800px;
+	height: 600px;
+	overflow: hidden;
+}
+
+#slide-num{
+	text-align: center;
+}
+
+#back{
+	float: left;
+}
+
+#next{
+	float: right;
+}
